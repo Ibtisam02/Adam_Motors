@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-charcoal-950 text-ink font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-wide;
+  }
+
+  ::selection {
+    @apply bg-brass-400 text-charcoal-950;
+  }
+
+  /* Visible keyboard focus for accessibility */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    @apply outline-none ring-2 ring-brass-400 ring-offset-2 ring-offset-charcoal-950;
+  }
+}
+
+@layer components {
+  .container-edge {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-brass-400 text-charcoal-950 hover:bg-brass-300 hover:shadow-glow;
+  }
+
+  .btn-outline {
+    @apply btn border border-ink/25 text-ink hover:border-brass-400 hover:text-brass-300;
+  }
+
+  .btn-ghost {
+    @apply btn text-ink/80 hover:text-brass-300;
+  }
+
+  .card-surface {
+    @apply rounded-md border border-white/5 bg-charcoal-800 shadow-card;
+  }
+
+  .input-field {
+    @apply w-full rounded-sm border border-white/10 bg-charcoal-900 px-4 py-2.5 text-sm text-ink placeholder:text-muted/60 focus:border-brass-400;
+  }
+
+  .label-field {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-[0.12em] text-muted;
+  }
+
+  .section-eyebrow {
+    @apply mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-brass-400;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hide scrollbar for filter chips on mobile while keeping scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

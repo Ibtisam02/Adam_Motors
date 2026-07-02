@@ -1,4 +1,4 @@
-# 🚗 Prestige Motors — Car Dealership Web Application
+# 🚗 Adam Motors — Car Dealership Web Application
 
 A full-stack, production-ready car dealership platform built with **Next.js 15
 (App Router)**, **TypeScript**, **Tailwind CSS**, **MongoDB Atlas**, and

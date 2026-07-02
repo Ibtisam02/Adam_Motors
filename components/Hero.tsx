@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Search, ArrowRight, ShieldCheck, Wallet, Award } from "lucide-react";
@@ -76,13 +76,13 @@ export default function Hero() {
         </form>
 
         <div className="mt-4 flex flex-wrap gap-3 animate-fade-up">
-          <a href="/cars" className="btn-outline">
+          <Link href="/cars" className="btn-outline">
             Browse All Inventory
             <ArrowRight className="h-4 w-4" />
-          </a>
-          <a href="#featured" className="btn-ghost">
+          </Link>
+          <Link href="#featured" className="btn-ghost">
             View Featured Cars
-          </a>
+          </Link>
         </div>
 
         {/* Trust strip */}

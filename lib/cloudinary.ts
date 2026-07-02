@@ -22,9 +22,12 @@ export async function deleteCloudinaryImages(publicIds: string[]) {
     console.error("Failed to delete Cloudinary images:", publicIds, err);
   }
 }
-
+type CloudinarySignatureParams = {
+  timestamp: number | string;
+  folder: string;
+};
 /** Generate a signature for direct (signed) uploads from the server */
-export function getCloudinarySignature(params: any) {
+export function getCloudinarySignature(params: CloudinarySignatureParams) {
   const apiSecret = process.env.CLOUDINARY_API_SECRET as string;
   console.log(apiSecret);
 console.log(process.env.CLOUDINARY_API_SECRET);

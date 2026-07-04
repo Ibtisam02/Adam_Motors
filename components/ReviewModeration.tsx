@@ -94,7 +94,7 @@ export default function ReviewModeration({ reviews: initial }: ReviewModerationP
       ) : (
         <ul className="space-y-3">
           {filtered.map((review) => {
-            const car = typeof review.carId === "object" ? review.carId : null;
+            //const car = typeof review.carId === "object" ? review.carId : null;
             const busy = busyId === review._id;
 
             return (
@@ -112,11 +112,11 @@ export default function ReviewModeration({ reviews: initial }: ReviewModerationP
                         {review.approved ? "Approved" : "Pending"}
                       </span>
                     </div>
-                    {car && (
+                    {/*car && (
                       <Link href={`/cars/${car._id}`} target="_blank" className="text-xs text-brass-400 hover:underline">
                         {car.title}
                       </Link>
-                    )}
+                    )*/}
                     <p className="mt-1 text-xs text-muted">{formatDate(review.createdAt)}</p>
                   </div>
                   <StarRating rating={review.rating} />

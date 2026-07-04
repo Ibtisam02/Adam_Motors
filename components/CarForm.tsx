@@ -35,7 +35,7 @@ export default function CarForm({ categories, car }: CarFormProps) {
       ? {
           title: car.title,
           brand: car.brand,
-          model: car.model,
+          CarModel: car.CarModel,
           year: car.year,
           mileage: car.mileage,
           fuelType: car.fuelType,
@@ -54,7 +54,7 @@ export default function CarForm({ categories, car }: CarFormProps) {
       : {
           title: "",
           brand: "",
-          model: "",
+          CarModel: "",
           year: new Date().getFullYear(),
           mileage: 0,
           fuelType: "Petrol",
@@ -133,9 +133,9 @@ export default function CarForm({ categories, car }: CarFormProps) {
             {errors.brand && <p className="mt-1 text-xs text-red-400">{errors.brand.message}</p>}
           </div>
           <div>
-            <label htmlFor="model" className="label-field">Model</label>
-            <input id="model" type="text" className="input-field" placeholder="Camry" {...register("model")} />
-            {errors.model && <p className="mt-1 text-xs text-red-400">{errors.model.message}</p>}
+            <label htmlFor="CarModel" className="label-field">Model</label>
+            <input id="CarModel" type="text" className="input-field" placeholder="Camry" {...register("CarModel")} />
+            {errors.CarModel && <p className="mt-1 text-xs text-red-400">{errors.CarModel.message}</p>}
           </div>
         </div>
 

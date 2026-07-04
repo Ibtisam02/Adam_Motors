@@ -78,7 +78,7 @@ export default function CarCard({ car, priority = false }: CarCardProps) {
             {car.title}
           </h3>
           <p className="mt-0.5 text-sm text-muted">
-            {car.brand} {car.model}
+            {car.brand} {car.CarModel}
           </p>
         </div>
 

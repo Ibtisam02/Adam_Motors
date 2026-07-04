@@ -6,6 +6,8 @@ import { categorySchema } from "@/schemas/category.schema";
 import { apiSuccess, apiError, sanitizeText, slugify } from "@/lib/utils";
 import { getCurrentAdmin } from "@/lib/auth";
 import { verifySameOrigin } from "@/lib/csrf";
+import Admin from "@/models/Admin";
+import { log } from "console";
 
 /**
  * GET /api/categories
@@ -49,8 +51,10 @@ export async function GET(request: NextRequest) {
  */
 export async function POST(request: NextRequest) {
   const admin = await getCurrentAdmin();
+  console.log(admin);
+  
   if (!admin) return apiError("Unauthorized", 401);
-
+  
   if (!verifySameOrigin(request)) {
     return apiError("Invalid request origin", 403);
   }

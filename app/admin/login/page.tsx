@@ -40,7 +40,7 @@ function LoginForm() {
 
       const from = searchParams.get("from") || "/admin";
       router.push(from);
-      router.refresh();
+      //router.refresh();
     } catch {
       setServerError("Network error. Please check your connection and try again.");
     }

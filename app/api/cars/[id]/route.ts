@@ -31,7 +31,8 @@ export async function GET(_request: NextRequest, { params }: Params) {
     await connectDB();
 
     const car = await Car.findById(id).populate("categoryId", "name slug").lean();
-
+    console.log(car);
+    
     if (!car) {
       return apiError("Car not found", 404);
     }
@@ -64,6 +65,8 @@ export async function PUT(request: NextRequest, { params }: Params) {
   let body: unknown;
   try {
     body = await request.json();
+    console.log(body);
+    
   } catch {
     return apiError("Invalid request body", 400);
   }
@@ -99,7 +102,7 @@ export async function PUT(request: NextRequest, { params }: Params) {
 
     existingCar.title = sanitizeText(data.title);
     existingCar.brand = sanitizeText(data.brand);
-    existingCar.model = sanitizeText(data.model);
+    existingCar.CarModel = sanitizeText(data.CarModel);
     existingCar.year = data.year;
     existingCar.mileage = data.mileage;
     existingCar.fuelType = data.fuelType;

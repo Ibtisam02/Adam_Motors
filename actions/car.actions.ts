@@ -53,7 +53,7 @@ export async function getCars(filters: CarFilters) {
     filter.$or = [
       { title: { $regex: safe, $options: "i" } },
       { brand: { $regex: safe, $options: "i" } },
-      { model: { $regex: safe, $options: "i" } },
+      { CarModel: { $regex: safe, $options: "i" } },
       { description: { $regex: safe, $options: "i" } },
     ];
   }
@@ -100,7 +100,7 @@ export async function getAllCarsAdmin(opts: { page?: number; limit?: number; sea
     filter.$or = [
       { title: { $regex: safe, $options: "i" } },
       { brand: { $regex: safe, $options: "i" } },
-      { model: { $regex: safe, $options: "i" } },
+      { CarModel: { $regex: safe, $options: "i" } },
     ];
   }
 

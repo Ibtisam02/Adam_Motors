@@ -8,7 +8,7 @@ import StarRating from "./StarRating";
 import { formatDate, cn } from "@/lib/utils";
 import type { IReview, ICar } from "@/types";
 
-type ReviewWithCar = IReview & { carId: Pick<ICar, "_id" | "title" | "brand" | "model"> | string };
+type ReviewWithCar = IReview & { carId: Pick<ICar, "_id" | "title" | "brand" | "CarModel"> | string };
 
 interface ReviewModerationProps {
   reviews: ReviewWithCar[];

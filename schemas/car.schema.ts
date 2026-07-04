@@ -14,7 +14,7 @@ export const carSchema = z.object({
     .min(3, "Title must be at least 3 characters")
     .max(150, "Title must be under 150 characters"),
   brand: z.string().trim().min(1, "Brand is required").max(60),
-  model: z.string().trim().min(1, "Model is required").max(60),
+  CarModel: z.string().trim().min(1, "CarModel1 is required").max(60),
   year: z.coerce
     .number()
     .int("Year must be a whole number")

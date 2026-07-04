@@ -22,7 +22,7 @@ export interface ICar {
   _id: string;
   title: string;
   brand: string;
-  model: string;
+  CarModel: string;
   year: number;
   mileage: number;
   fuelType: FuelType;

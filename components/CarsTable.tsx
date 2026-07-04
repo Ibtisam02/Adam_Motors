@@ -26,7 +26,7 @@ export default function CarsTable({ cars: initialCars }: CarsTableProps) {
     const payload = {
       title: car.title,
       brand: car.brand,
-      model: car.model,
+      CarModel: car.CarModel,
       year: car.year,
       mileage: car.mileage,
       fuelType: car.fuelType,
@@ -42,7 +42,8 @@ export default function CarsTable({ cars: initialCars }: CarsTableProps) {
       sold: field === "sold" ? !car.sold : car.sold,
       images: car.images,
     };
-
+    console.log("1233333"+ payload);
+    
     try {
       const res = await fetch(`/api/cars/${car._id}`, {
         method: "PUT",
@@ -128,7 +129,7 @@ export default function CarsTable({ cars: initialCars }: CarsTableProps) {
                     </div>
                     <div>
                       <p className="line-clamp-1 font-medium text-ink">{car.title}</p>
-                      <p className="text-xs text-muted">{car.brand} {car.model} · {car.year}</p>
+                      <p className="text-xs text-muted">{car.brand} {car.CarModel} · {car.year}</p>
                     </div>
                   </div>
                 </td>

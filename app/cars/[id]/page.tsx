@@ -30,12 +30,13 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = await params;
   const car = await getCarById(id);
+console.log(car);
 
   if (!car) {
     return { title: "Vehicle Not Found" };
   }
 
-  const description = `${car.year} ${car.brand} ${car.model} — ${formatPrice(car.price)}. ${car.mileage.toLocaleString()} miles, ${car.fuelType}, ${car.transmission}.`;
+  const description = `${car.year} ${car.brand} ${car.CarModel} — ${formatPrice(car.price)}. ${car.mileage.toLocaleString()} miles, ${car.fuelType}, ${car.transmission}.`;
 
   return {
     title: car.title,
@@ -95,7 +96,7 @@ export default async function CarDetailPage({ params }: PageProps) {
             <h1 className="mt-2 font-display text-2xl font-bold uppercase tracking-wide text-ink sm:text-3xl lg:text-4xl">
               {car.title}
             </h1>
-            <p className="mt-1 text-muted">{car.brand} · {car.model}</p>
+            <p className="mt-1 text-muted">{car.brand} · {car.CarModel}</p>
           </div>
 
           {/* Specs grid */}
@@ -195,7 +196,7 @@ export default async function CarDetailPage({ params }: PageProps) {
             You May Also Like
           </h2>
           <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {relatedCars.map((related) => (
+            {relatedCars.map((related:any) => (
               <CarCard key={related._id} car={related} />
             ))}
           </div>

@@ -8,7 +8,7 @@ export interface CarImage {
 export interface CarDocument extends Document {
   title: string;
   brand: string;
-  model: string;
+ CarModel: string;
   year: number;
   mileage: number;
   fuelType: "Petrol" | "Diesel" | "Hybrid" | "Electric" | "CNG";
@@ -49,9 +49,9 @@ const CarSchema = new Schema<CarDocument>(
       trim: true,
       index: true,
     },
-    model: {
+    CarModel: {
       type: String,
-      required: [true, "Model is required"],
+      required: [true, "CarModel is required"],
       trim: true,
     },
     year: {
@@ -136,7 +136,7 @@ const CarSchema = new Schema<CarDocument>(
   { timestamps: true }
 );
 
-CarSchema.index({ title: "text", brand: "text", model: "text", description: "text" });
+CarSchema.index({ title: "text", brand: "text", CarModel: "text", description: "text" });
 CarSchema.index({ createdAt: -1 });
 CarSchema.index({ price: 1, year: -1 });
 

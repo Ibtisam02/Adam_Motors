@@ -92,7 +92,7 @@ export default async function CarsPage({
         ) : (
           <>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-              {cars.map((car, i) => (
+              {cars.map((car:any, i:any) => (
                 <CarCard key={car._id} car={car} priority={i < 3} />
               ))}
             </div>

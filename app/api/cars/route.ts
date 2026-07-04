@@ -81,7 +81,7 @@ export async function GET(request: NextRequest) {
       filter.$or = [
         { title: { $regex: safe, $options: "i" } },
         { brand: { $regex: safe, $options: "i" } },
-        { model: { $regex: safe, $options: "i" } },
+        { CarModel: { $regex: safe, $options: "i" } },
         { description: { $regex: safe, $options: "i" } },
       ];
     }
@@ -149,6 +149,7 @@ export async function POST(request: NextRequest) {
   }
 
   const data = parsed.data;
+console.log(JSON.stringify(data));
 
   if (!mongoose.isValidObjectId(data.categoryId)) {
     return apiError("Invalid category", 400);
@@ -172,7 +173,7 @@ export async function POST(request: NextRequest) {
           {
             title: sanitizeText(data.title),
             brand: sanitizeText(data.brand),
-            model: sanitizeText(data.model),
+            CarModel: sanitizeText(data.CarModel),
             year: data.year,
             mileage: data.mileage,
             fuelType: data.fuelType,

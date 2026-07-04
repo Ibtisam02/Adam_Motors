@@ -4,6 +4,7 @@ import CarFilters from "@/components/CarFilters";
 import Pagination from "@/components/Pagination";
 import { getCars, getDistinctBrands, getDistinctYears } from "@/actions/car.actions";
 import { getCategories } from "@/actions/category.actions";
+import { ICar } from "@/types";
 
 export const metadata: Metadata = {
   title: "Inventory",
@@ -92,7 +93,7 @@ export default async function CarsPage({
         ) : (
           <>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-              {cars.map((car:any, i:any) => (
+              {cars.map((car:ICar, i:number) => (
                 <CarCard key={car._id} car={car} priority={i < 3} />
               ))}
             </div>

@@ -6,8 +6,6 @@ import { categorySchema } from "@/schemas/category.schema";
 import { apiSuccess, apiError, sanitizeText, slugify } from "@/lib/utils";
 import { getCurrentAdmin } from "@/lib/auth";
 import { verifySameOrigin } from "@/lib/csrf";
-import Admin from "@/models/Admin";
-import { log } from "console";
 
 /**
  * GET /api/categories

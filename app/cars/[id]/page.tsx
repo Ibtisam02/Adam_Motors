@@ -21,7 +21,7 @@ import CarCard from "@/components/CarCard";
 import { getCarById, getRelatedCars } from "@/actions/car.actions";
 import { getApprovedReviews } from "@/actions/review.actions";
 import { formatPrice, formatNumber } from "@/lib/utils";
-import type { ICategory } from "@/types";
+import type { ICar, ICategory } from "@/types";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -196,7 +196,7 @@ export default async function CarDetailPage({ params }: PageProps) {
             You May Also Like
           </h2>
           <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {relatedCars.map((related:any) => (
+            {relatedCars.map((related:ICar) => (
               <CarCard key={related._id} car={related} />
             ))}
           </div>

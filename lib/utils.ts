@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import DOMPurify from "isomorphic-dompurify";
 
 /** Standardized success JSON response */
 export function apiSuccess<T>(data: T, message?: string, status = 200) {
@@ -23,17 +22,14 @@ export function slugify(text: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
-/** Strip HTML/script content from user-supplied strings to prevent XSS */
+/** Remove HTML tags from user input */
 export function sanitizeText(input: string): string {
-  return DOMPurify.sanitize(input, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] }).trim();
+  return input.replace(/<[^>]*>/g, "").trim();
 }
 
-/** Sanitize rich text (allows a safe subset of formatting tags) */
+/** Basic HTML sanitizer replacement */
 export function sanitizeHtml(input: string): string {
-  return DOMPurify.sanitize(input, {
-    ALLOWED_TAGS: ["b", "strong", "i", "em", "ul", "ol", "li", "p", "br", "h3", "h4"],
-    ALLOWED_ATTR: [],
-  });
+  return input.replace(/<script.*?>.*?<\/script>/gi, "").trim();
 }
 
 /** Format a number as currency (USD by default) */

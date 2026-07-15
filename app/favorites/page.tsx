@@ -66,7 +66,7 @@ export default function FavoritesPage() {
         <div className="rounded-md border border-dashed border-white/10 bg-charcoal-800/50 p-12 text-center">
           <Heart className="mx-auto h-10 w-10 text-muted/40" />
           <p className="mt-3 font-display text-lg uppercase tracking-wide text-ink">
-            No favorites yet
+            There is No favorites yet
           </p>
           <p className="mt-2 text-sm text-muted">
             Tap the heart icon on any vehicle to save it here for later.

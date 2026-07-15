@@ -1,16 +1,17 @@
 import { NextResponse } from "next/server";
-import cn from "./cn";
+import DOMPurify from "isomorphic-dompurify";
 
-export { cn };
-
+/** Standardized success JSON response */
 export function apiSuccess<T>(data: T, message?: string, status = 200) {
   return NextResponse.json({ success: true, data, message }, { status });
 }
 
+/** Standardized error JSON response. Never leaks internal error details. */
 export function apiError(error: string, status = 400, details?: unknown) {
   return NextResponse.json({ success: false, error, details }, { status });
 }
 
+/** Generate a URL friendly slug from a string */
 export function slugify(text: string): string {
   return text
     .toString()
@@ -22,48 +23,20 @@ export function slugify(text: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
-/**
- * Strip ALL HTML tags from a string — safe for plain text fields like
- * names, emails, and search queries. No DOM dependency.
- */
+/** Strip HTML/script content from user-supplied strings to prevent XSS */
 export function sanitizeText(input: string): string {
-  return input
-    .replace(/<[^>]*>/g, "")          // strip all tags
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&amp;/g, "&")
-    .replace(/&quot;/g, '"')
-    .replace(/&#x27;/g, "'")
-    .replace(/javascript:/gi, "")     // kill any leftover js: urls
-    .trim();
+  return DOMPurify.sanitize(input, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] }).trim();
 }
 
-/**
- * Allow a safe subset of formatting tags for rich text fields
- * (description, installment details). Strips everything else.
- * No DOM dependency — runs safely on the server.
- */
+/** Sanitize rich text (allows a safe subset of formatting tags) */
 export function sanitizeHtml(input: string): string {
-  const ALLOWED_TAGS = ["b", "strong", "i", "em", "ul", "ol", "li", "p", "br", "h3", "h4"];
-
-  // Build a regex that matches any tag NOT in the allowed list
-  return input
-    // Remove script and style blocks entirely including content
-    .replace(/<script[\s\S]*?<\/script>/gi, "")
-    .replace(/<style[\s\S]*?<\/style>/gi, "")
-    // Strip all attributes from allowed tags (prevents onclick etc.)
-    .replace(/<(\/?)(\w+)([^>]*)>/g, (_match, slash, tag, _attrs) => {
-      const lowerTag = tag.toLowerCase();
-      if (ALLOWED_TAGS.includes(lowerTag)) {
-        return `<${slash}${lowerTag}>`;
-      }
-      return "";
-    })
-    // Kill any remaining javascript: references
-    .replace(/javascript:/gi, "")
-    .trim();
+  return DOMPurify.sanitize(input, {
+    ALLOWED_TAGS: ["b", "strong", "i", "em", "ul", "ol", "li", "p", "br", "h3", "h4"],
+    ALLOWED_ATTR: [],
+  });
 }
 
+/** Format a number as currency (USD by default) */
 export function formatPrice(value: number, currency = "USD"): string {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -72,10 +45,12 @@ export function formatPrice(value: number, currency = "USD"): string {
   }).format(value);
 }
 
+/** Format a number with thousands separators (e.g. mileage) */
 export function formatNumber(value: number): string {
   return new Intl.NumberFormat("en-US").format(value);
 }
 
+/** Format an ISO date string into a readable date */
 export function formatDate(value: string | Date): string {
   return new Intl.DateTimeFormat("en-US", {
     year: "numeric",
@@ -83,3 +58,6 @@ export function formatDate(value: string | Date): string {
     day: "numeric",
   }).format(new Date(value));
 }
+
+/** Combine class names conditionally */
+export { default as cn } from "./cn";

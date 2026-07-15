@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import DOMPurify from "isomorphic-dompurify";
+import DOMPurify from "dompurify";
 
 /** Standardized success JSON response */
 export function apiSuccess<T>(data: T, message?: string, status = 200) {

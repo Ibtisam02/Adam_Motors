@@ -65,7 +65,7 @@ export default async function ContactPage({ searchParams }: PageProps) {
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="mt-0.5 h-4 w-4 shrink-0 text-brass-400" />
-                <span>Mon – Sat: 8:00 AM – 5:00 PM</span>
+                <span>Mon – Fri: 8:00 AM – 5:00 PM <br />Sat: 8:00 AM – 2:00 PM</span>
               </li>
             </ul>
           </div>

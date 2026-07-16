@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Heart, Phone, ChevronDown, Car } from "lucide-react";
+import { Menu, X, Heart, Phone, ChevronDown } from "lucide-react";
 import { useFavorites } from "@/hooks/useFavorites";
 import { cn } from "@/lib/utils";
 import type { ICategory } from "@/types";
+import Image from 'next/image';
 
 interface NavbarProps {
   categories: ICategory[];
@@ -52,10 +53,17 @@ export default function Navbar({ categories }: NavbarProps) {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <span className="flex h-9 w-9 items-center justify-center rounded-sm border border-brass-400/40 text-brass-400 sm:h-10 sm:w-10">
-            <Car className="h-5 w-5" />
+            <Image
+          src="https://res.cloudinary.com/dj0k9z7tr/image/upload/v1784187977/AdamMoters/IMG-20260716-WA00033_wwmpao.jpg"       
+          alt="Company Logo"
+          width={150}          
+          height={50}
+          className="rounded-sm"         
+          priority              
+        />
           </span>
           <span className="font-display text-lg font-semibold uppercase tracking-[0.2em] text-ink sm:text-xl">
-            {process.env.NEXT_PUBLIC_SITE_NAME || "Prestige Motors"}
+            {process.env.NEXT_PUBLIC_SITE_NAME || "Adam Motors"}
           </span>
         </Link>
 

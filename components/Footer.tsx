@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Car, Phone, Mail, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+import {  Phone, Mail, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
 import type { ICategory } from "@/types";
+import Image from "next/image";
 
 interface FooterProps {
   categories: ICategory[];
@@ -16,7 +17,14 @@ export default function Footer({ categories }: FooterProps) {
         <div>
           <Link href="/" className="flex items-center gap-2">
             <span className="flex h-9 w-9 items-center justify-center rounded-sm border border-brass-400/40 text-brass-400">
-              <Car className="h-5 w-5" />
+              <Image
+                        src="https://res.cloudinary.com/dj0k9z7tr/image/upload/v1784187977/AdamMoters/IMG-20260716-WA00033_wwmpao.jpg"       
+                        alt="Company Logo"
+                        width={150}          
+                        height={50}
+                        className="rounded-sm"         
+                        priority              
+                      />
             </span>
             <span className="font-display text-lg font-semibold uppercase tracking-[0.2em] text-ink">
               {process.env.NEXT_PUBLIC_SITE_NAME || "Prestige Motors"}

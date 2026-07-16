@@ -145,7 +145,7 @@ There is **no public registration page** — admins are created via a CLI
 script that connects directly to your database:
 
 ```bash
-npm run create-admin -- --email admin@example.com --password "StrongPassword123!" --name "Admin"
+npm run create-admin -- --email admin123@gmail.com --password "examplereai8h3n" --name "Admin"
 ```
 
 This hashes the password with bcrypt and inserts the admin document into

@@ -171,7 +171,7 @@ export default function CarForm({ categories, car }: CarFormProps) {
             {errors.mileage && <p className="mt-1 text-xs text-red-400">{errors.mileage.message}</p>}
           </div>
           <div>
-            <label htmlFor="price" className="label-field">Price (USD)</label>
+            <label htmlFor="price" className="label-field">Price (KES)</label>
             <input id="price" type="number" className="input-field" {...register("price")} />
             {errors.price && <p className="mt-1 text-xs text-red-400">{errors.price.message}</p>}
           </div>

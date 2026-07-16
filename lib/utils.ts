@@ -33,7 +33,7 @@ export function sanitizeHtml(input: string): string {
 }
 
 /** Format a number as currency (USD by default) */
-export function formatPrice(value: number, currency = "USD"): string {
+export function formatPrice(value: number, currency = "KES"): string {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency,

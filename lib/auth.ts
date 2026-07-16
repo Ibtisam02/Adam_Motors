@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
+import Admin from "@/models/Admin";
 import { AdminJwtPayload } from "@/types";
 
 const JWT_SECRET = process.env.JWT_SECRET as string;
@@ -48,7 +49,17 @@ export async function getCurrentAdmin(): Promise<AdminJwtPayload | null> {
   const cookieStore = await cookies();
   const token = cookieStore.get(AUTH_COOKIE_NAME)?.value;
   if (!token) return null;
-  return verifyToken(token);
+  const payload = verifyToken(token);
+  if (!payload) return null;
+
+  // Check if admin still exists
+  const admin = await Admin.findById(payload.id).lean();
+
+  if (!admin) {
+    return null;
+  }
+
+  return payload;
 }
 
 /** Cookie options used when setting the auth cookie */

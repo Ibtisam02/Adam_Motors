@@ -1,5 +1,6 @@
 import Link from "next/link";
-import {  Phone, Mail, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+import {  Phone, Mail, MapPin, Facebook  } from "lucide-react";
+import { FaTiktok } from "react-icons/fa6";
 import type { ICategory } from "@/types";
 import Image from "next/image";
 
@@ -36,10 +37,10 @@ export default function Footer({ categories }: FooterProps) {
             it&apos;s their own car.
           </p>
           <div className="mt-5 flex gap-3">
-            {[Facebook, Instagram, Youtube].map((Icon, i) => (
+            {[Facebook, FaTiktok].map((Icon, i) => (
               <a
                 key={i}
-                href="#"
+                href={i===0 ? "https://www.facebook.com/share/17YtDDNs96" : "https://www.tiktok.com/@adam.motors1"}
                 className="flex h-9 w-9 items-center justify-center rounded-sm border border-white/10 text-muted transition-colors hover:border-brass-400 hover:text-brass-400"
                 aria-label="Social media link"
               >

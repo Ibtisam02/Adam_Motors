@@ -19,7 +19,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Prestige Motors";
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Adam Motors";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 export const metadata: Metadata = {
